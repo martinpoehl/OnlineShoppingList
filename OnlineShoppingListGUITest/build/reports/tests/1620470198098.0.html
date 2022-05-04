@@ -1,0 +1,53 @@
+<html><head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Artikel bearbeiten</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+</head>
+
+<body>
+    <div class="container my-5">
+        <h3> Artikel bearbeiten</h3>
+        <div class="card">
+            <div class="card-body">
+                <div class="col-md-8">
+                    <form action="/articles/edit/2" method="post">
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="bezeichnung" class="col-form-label">Bezeichnung</label> <input type="text" class="form-control" id="bezeichnung" placeholder="Bezeichnung" name="bezeichnung" value="Birne"> 
+                            </div>
+                            <div class="form-group col-md-8">
+                                <label for="kategorie" class="col-form-label">Kategorie</label> 
+                            	<select class="form-control" id="kategorie" placeholder="Kategorie" name="kategorie">
+                            		<option value="Frucht" selected="selected">Frucht</option>
+                            		<option value="Gemuese">Gemüse</option>
+                            		<option value="Fleisch">Fleisch</option>
+                            		<option value="Spielwaren">Spielwaren</option>
+                            		<option value="Buecher">Bücher</option>
+                            		<option value="Kleidung">Kleidung</option>
+                            	</select>
+                            </div>
+                            <div class="form-group col-md-8">
+                                <label for="preis" class="col-form-label">Preis</label> <input type="text" class="form-control" id="email" placeholder="Preis" name="preis" value="2.3"> 
+                            </div>
+                            <div class="form-group col-md-8">
+                                <label for="status" class="col-form-label">Status</label> 
+                            	<select class="form-control" id="status" placeholder="Status" name="status">
+                            		<option value="In_Bearbeitung">In Bearbeitung</option>
+                            		<option value="Erledigt" selected="selected">Erledigt</option>
+                            	</select>
+                            </div>
+                            <div class="form-group col-md-8">
+                                <input type="submit" class="btn btn-primary" value="Ändern">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body></html>

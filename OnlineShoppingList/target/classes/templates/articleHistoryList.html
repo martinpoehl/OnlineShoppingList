@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!-- Thymeleaf Namespace definieren -->
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Erledigt</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap für's Styling (CSS) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <!-- Fontawesome für Icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" >
+</head>
+
+<body>
+	<div th:insert="fragments :: header"></div>
+	<!-- Die folgenden Klassen sind alles Bootstrap-Klassen -->
+    <div class="container my-2">
+        <div class="card">
+            <div class="card-body">
+            	<!-- Switch auf das Model Attribut "article" -->
+                <div th:switch="${articles}" class="container my-5">
+                    <div class="col-md-10">
+                    	<p class="my-5">
+                    		<a href="/articles/deleteAllDone" class="btn btn-primary" id="clearHistory"><i class="fas fa-user-minus ml-2">Liste leeren</i></a>
+                    	</p>
+                    	<!-- Falls noch kein Artikel in der Liste -->
+                        <h2 th:case="null">History-Liste leer. Noch keine Artikel eingekauft!</h2>
+                        <!-- Falls Artikel in der Liste vorhanden -->
+                        <div th:case="*">
+                            <table class="table table-striped table-responsive-md">
+                                <thead>
+                                    <tr>
+                                    	<th>ID</th>
+                                        <th>Bezeichnung</th>
+                                        <th>Kategorie</th>
+                                        <th>Preis</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="article : ${articles}"> <!-- Über Artikel iterieren -->
+                                        <th th:text="${article.id}"></th>
+                                        <td th:text="${article.bezeichnung}"></td>
+                                        <td th:text="${article.categorie}"></td>
+                                        <td th:text="${article.preis}"></td>
+                                        <td th:text="${article.status}"></td>
+                                        <!-- Edit-Button -->
+                                        <td><a th:href="@{/articles/edit/{id}(id=${article.id})}" class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a></td>
+                                        <!-- Delete-Button -->
+                                        <td><a th:href="@{/articles/delete/{id}(id=${article.id})}" class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
